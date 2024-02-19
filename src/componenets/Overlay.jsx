@@ -5,7 +5,7 @@ export default function Overlay() {
         <a href='https://sohyunjun.xyz/'>logo.com</a>
       </div>
       <div id='nav'>
-        <a href='https://sohyunjun.xyz/about'>ABOUT</a>
+        <a href='http://localhost:5173/about'>ABOUT</a>
       </div>
     </div>
   )

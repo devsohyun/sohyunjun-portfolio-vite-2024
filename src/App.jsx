@@ -10,7 +10,7 @@ import {
   ToneMapping,
 } from "@react-three/postprocessing"
 import { LUTCubeLoader, ToneMappingMode } from "postprocessing"
-import Model from "./componenets/Model"
+import Model from "./componenets/home/Model"
 import "./styles/main.scss"
 
 const App = () => {
@@ -23,7 +23,7 @@ const App = () => {
         state.gl.toneMapping = THREE.NoToneMapping
       }}
     >
-      <color attach='background' args={["#151515"]} />
+      <color attach='background' args={["#2c2c2c"]} />
       <ambientLight intensity={0.5} />
       <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} />
       <pointLight position={[-10, -10, -10]} />
