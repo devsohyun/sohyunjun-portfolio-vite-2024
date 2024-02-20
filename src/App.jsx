@@ -2,8 +2,8 @@ import * as THREE from "three"
 import { Canvas, useLoader } from "@react-three/fiber"
 import { Scroll, ScrollControls } from "@react-three/drei"
 import "./styles/main.scss"
-import { Experience } from "./componenets/home/Experience"
-import { Interface } from "./componenets/home/Interface"
+import { Experience } from "./componenets/experience/Experience"
+import { Interface } from "./componenets/interface/Panels"
 
 const App = () => {
   return (
