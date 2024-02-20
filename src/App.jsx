@@ -3,7 +3,7 @@ import { Canvas, useLoader } from "@react-three/fiber"
 import { Scroll, ScrollControls } from "@react-three/drei"
 import "./styles/main.scss"
 import { Experience } from "./componenets/experience/Experience"
-import { Interface } from "./componenets/interface/Panels"
+import { Interface } from "./componenets/interface/Sections"
 
 const App = () => {
   return (
