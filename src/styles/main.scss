@@ -1,3 +1,9 @@
+@import './core/variables';
+@import './core/colors';
+
 @import './common/fonts';
+@import './common/base';
 
 @import './main/overlay';
+
+@import './interface/panels';

@@ -1,0 +1,15 @@
+* {
+	&::-webkit-scrollbar {
+		display: none;
+	}
+}
+
+html {
+	--c: calc(100% - (24px * 11) / 12);
+}
+
+html,
+body {
+	font-family: $font-default;
+	box-sizing: border-box;
+}

@@ -29,7 +29,7 @@ const Flower = (props) => {
           attenuationDistance={0.5}
           anisotropicBlur={0.1}
           envMapIntensity={0.3}
-          color={"#b6b6b6"}
+          color={"#d3d3d3"}
         />
       </mesh>
       <mesh
