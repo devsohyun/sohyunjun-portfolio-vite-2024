@@ -1,3 +1,7 @@
-//FONT
+// FONT
 $font-gantari : 'Gantari';
 $font-default: $font-gantari, sans-serif;
+
+// LAYOUT
+$base-padding-x: max(5vw, 40px);
+$base-padding-y: clamp(30px, 4vw, 50px);

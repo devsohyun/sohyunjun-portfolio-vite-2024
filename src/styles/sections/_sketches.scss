@@ -1,0 +1,21 @@
+.sketches-contents {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    gap: 20px;
+    align-items: flex-start;
+
+	a {
+		flex: 0 0 auto;
+		max-width: calc(20% - 10px); // maintain responsiveness
+
+		img {
+			width: auto;
+			max-width: 100%;
+			display: block;
+			object-fit: cover;
+			border-radius: 15px;
+		}
+	}
+}

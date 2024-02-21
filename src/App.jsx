@@ -2,8 +2,8 @@ import * as THREE from "three"
 import { Canvas, useLoader } from "@react-three/fiber"
 import { Scroll, ScrollControls } from "@react-three/drei"
 import "./styles/main.scss"
-import { Experience } from "./componenets/experience/Experience"
-import { Interface } from "./componenets/interface/Sections"
+import { Experience } from "./componenets/experienece/Experience"
+import { Interface } from "./componenets/sections/Interface"
 
 const App = () => {
   return (
@@ -16,7 +16,7 @@ const App = () => {
     >
       <color attach='background' args={["#2c2c2c"]} />
       {/* <OrbitControls /> */}
-      <ScrollControls pages={4} damping={0.1}>
+      <ScrollControls pages={7} damping={0.1}>
         <Experience />
         <Scroll html>
           <Interface />

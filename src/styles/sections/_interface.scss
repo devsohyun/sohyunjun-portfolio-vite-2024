@@ -2,10 +2,10 @@
     width: 100vw;
 }
 
-.interface-panel {
+.section {
     position: relative;
     display: flex;
-    padding: 0 40px 0 40px;
+    padding: $base-padding-y $base-padding-x;
     flex-direction: column;
     align-items: start;
     justify-content: center;
@@ -14,7 +14,14 @@
     max-width: 100%;
 
     &:nth-child(2) {
-        background-color: adjust-hue($color: #bcbcbc, $degrees: 0);
+        // background-color: adjust-hue($color: #bcbcbc, $degrees: 0);
+        border: 1px red solid;
+        height: 200vh;
+    }
+
+    &:nth-child(3) {
+        border: 1px red solid;
+        height: 300vh;
     }
 
     h1 {
