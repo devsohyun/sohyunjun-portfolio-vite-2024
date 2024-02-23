@@ -1,7 +1,4 @@
-import { motion, useScroll, useTransform } from "framer-motion"
-import { useEffect, useRef, forwardRef } from "react"
-import { ProjectsSection } from "./Projects"
-import { SketchesSection } from "./Sketches"
+import { motion } from "framer-motion"
 
 export const Section = (props) => {
   const { children } = props
@@ -11,7 +8,7 @@ export const Section = (props) => {
       className='section'
       initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5 }}
+      transition={{ duration: 1 }}
     >
       {children}
     </motion.section>

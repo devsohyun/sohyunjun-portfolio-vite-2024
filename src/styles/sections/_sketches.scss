@@ -9,6 +9,9 @@
 	a {
 		flex: 0 0 auto;
 		max-width: calc(20% - 10px); // maintain responsiveness
+		@media (max-width: 800px) {
+			max-width: calc(70% - 10px);
+		}
 
 		img {
 			width: auto;
