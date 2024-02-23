@@ -1,3 +1,4 @@
+import { IntroSection } from "./Intro"
 import { ProjectsSection } from "./Projects"
 import { SketchesSection } from "./Sketches"
 import { Section } from "./Utils"
@@ -5,9 +6,7 @@ import { Section } from "./Utils"
 export const Interface = () => {
   return (
     <div className='interface-container'>
-      <Section>
-        <h2>MAIN</h2>
-      </Section>
+      <IntroSection />
       <ProjectsSection />
       <SketchesSection />
       <Section>
