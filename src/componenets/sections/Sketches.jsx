@@ -10,17 +10,12 @@ export const SketchesSection = () => {
 
   const x = useTransform(scrollYProgress, [0, 1], ["1%", "-95%"])
 
-  //   useEffect(() => {
-  //     console.log(x)
-  //   }, [x])
-
   return (
     <Section>
       <div ref={targetRef}>
         <h1>Sketches</h1>
         <div className='sketches-contents'>
           {cards.map((card) => {
-            console.log(cards)
             return <Card card={card} key={card.id} />
           })}
         </div>

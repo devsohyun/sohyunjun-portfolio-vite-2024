@@ -31,7 +31,7 @@ export const ProjectsSection = () => {
         <h2>Featured Projects</h2>
         <div className='projects-contents'>
           {cards.map((card) => (
-            <div className='project'>
+            <div key={card.id} className='project'>
               <motion.a
                 href={`/projects&${card.id}`}
                 initial={{ y: 50, opacity: 0 }}

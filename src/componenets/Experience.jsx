@@ -10,9 +10,13 @@ import {
 import { LUTCubeLoader, ToneMappingMode } from "postprocessing"
 import Model from "./Model"
 import { useLoader } from "@react-three/fiber"
+import { useMotionValue } from "framer-motion"
 
-export const Experience = () => {
+export const Experience = (props) => {
   const texture = useLoader(LUTCubeLoader, "/models/F-6800-STD.cube")
+  
+  const cameraPositionX = useMotionValue()
+  const cameraLookAtX = useMotionValue()
 
   return (
     <>
