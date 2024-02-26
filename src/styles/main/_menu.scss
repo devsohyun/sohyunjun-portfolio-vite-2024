@@ -1,7 +1,6 @@
 .nav {
     position: fixed;
     z-index: 100;
-    @extend .gantari-regular;
 
     .navbar {
         position: fixed;
@@ -12,10 +11,12 @@
         justify-content: space-between;
         align-items: center;
         padding: 2em;
-        border: 1px solid red;
+        z-index: 100;
 
         #logo {
             a {
+                @extend .gantari-regular;
+                font-size: 18px;
                 color: var(--color-white);
                 text-decoration: none;
                 text-transform: uppercase;

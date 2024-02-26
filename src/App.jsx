@@ -10,8 +10,7 @@ import { Nav } from "./componenets/Nav"
 
 const App = () => {
   const [section, setSection] = useState(0)
-  const [menuOpened, setMenuOpened] = useState(0)
-  // const [sectionChange, setSectionChange] = useState(0)
+  const [menuOpened, setMenuOpened] = useState(false)
 
   useEffect(() => {
     console.log(section)
@@ -36,7 +35,11 @@ const App = () => {
           </Scroll>
         </ScrollControls>
       </Canvas>
-      <Nav onSectionChange={setSection} menuOpened={menuOpened} setMenuOpened={setMenuOpened} />
+      <Nav
+        onSectionChange={setSection}
+        menuOpened={menuOpened}
+        setMenuOpened={setMenuOpened}
+      />
     </>
   )
 }
