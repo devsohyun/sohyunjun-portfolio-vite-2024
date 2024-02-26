@@ -6,11 +6,11 @@ import { Experience } from "./componenets/Experience"
 import { Interface } from "./componenets/sections/Interface"
 import { useEffect, useState } from "react"
 import { ScrollManager } from "./componenets/ScrollManager"
-import { Menu } from "./componenets/Menu"
+import { Nav } from "./componenets/Nav"
 
 const App = () => {
   const [section, setSection] = useState(0)
-  const [menuOpened, useMenuOpened] = useState(0)
+  const [menuOpened, setMenuOpened] = useState(0)
   // const [sectionChange, setSectionChange] = useState(0)
 
   useEffect(() => {
@@ -36,7 +36,7 @@ const App = () => {
           </Scroll>
         </ScrollControls>
       </Canvas>
-      <Menu />
+      <Nav onSectionChange={setSection} menuOpened={menuOpened} setMenuOpened={setMenuOpened} />
     </>
   )
 }
