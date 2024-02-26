@@ -6,31 +6,38 @@ import { Experience } from "./componenets/Experience"
 import { Interface } from "./componenets/sections/Interface"
 import { useEffect, useState } from "react"
 import { ScrollManager } from "./componenets/ScrollManager"
+import { Menu } from "./componenets/Menu"
 
 const App = () => {
   const [section, setSection] = useState(0)
   const [menuOpened, useMenuOpened] = useState(0)
   // const [sectionChange, setSectionChange] = useState(0)
 
+  useEffect(() => {
+    console.log(section)
+  }, [section])
 
   return (
-    <Canvas
-      gl={{ antialias: false }}
-      camera={{ position: [15, -8, 15], fov: 15 }}
-      onCreated={(state) => {
-        state.gl.toneMapping = THREE.NoToneMapping
-      }}
-    >
-      <color attach='background' args={["#2c2c2c"]} />
-      {/* <OrbitControls /> */}
-      <ScrollControls pages={6.5} damping={0.1}>
-        <ScrollManager section={section} onSectionChange={setSection} />
-        <Experience menuOpened={menuOpened} />
-        <Scroll html>
-          <Interface />
-        </Scroll>
-      </ScrollControls>
-    </Canvas>
+    <>
+      <Canvas
+        gl={{ antialias: false }}
+        camera={{ position: [15, -8, 15], fov: 15 }}
+        onCreated={(state) => {
+          state.gl.toneMapping = THREE.NoToneMapping
+        }}
+      >
+        <color attach='background' args={["#2c2c2c"]} />
+        {/* <OrbitControls /> */}
+        <ScrollControls pages={6.5} damping={0.1}>
+          <ScrollManager section={section} onSectionChange={setSection} />
+          <Experience menuOpened={menuOpened} />
+          <Scroll html>
+            <Interface />
+          </Scroll>
+        </ScrollControls>
+      </Canvas>
+      <Menu />
+    </>
   )
 }
 
