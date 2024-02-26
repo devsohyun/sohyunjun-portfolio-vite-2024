@@ -1,5 +1,6 @@
 import { motion } from "framer-motion"
 import { useState } from "react"
+import { Link, Router } from "react-router-dom"
 
 export const Nav = (props) => {
   const { onSectionChange, menuOpened, setMenuOpened } = props
@@ -51,7 +52,16 @@ export const Nav = (props) => {
             stiffness: 200,
             damping: 40,
           }}
-        ></motion.div>
+        >
+          <ul className='nav-links'>
+            <li className='nav-item'>
+              {/* 여기부터 작성 >> App에 Router로 정리해야함 */}
+            </li>
+          </ul>
+          <div className='nav-footer'>
+            <div className='nav-social-media'></div>
+          </div>
+        </motion.div>
       </div>
     </div>
   )

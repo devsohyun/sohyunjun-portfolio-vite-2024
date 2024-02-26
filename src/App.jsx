@@ -1,6 +1,6 @@
 import * as THREE from "three"
 import { Canvas } from "@react-three/fiber"
-import { Scroll, ScrollControls } from "@react-three/drei"
+import { OrbitControls, Scroll, ScrollControls } from "@react-three/drei"
 import "./styles/main.scss"
 import { Experience } from "./componenets/Experience"
 import { Interface } from "./componenets/sections/Interface"
@@ -11,10 +11,6 @@ import { Nav } from "./componenets/Nav"
 const App = () => {
   const [section, setSection] = useState(0)
   const [menuOpened, setMenuOpened] = useState(false)
-
-  useEffect(() => {
-    console.log(section)
-  }, [section])
 
   return (
     <>

@@ -5,7 +5,7 @@ export const IntroSection = () => {
   return (
     <Section>
       <div className='intro-container'>
-        <motion.h1>Introduction</motion.h1>
+        <motion.h1>Lorem Ipsum</motion.h1>
         <motion.p
           initial={{ opacity: 0, y: 25 }}
           whileInView={{ opacity: 1, y: 1 }}
