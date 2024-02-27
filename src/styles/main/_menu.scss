@@ -1,8 +1,8 @@
-.nav {
+.menu {
     position: fixed;
     z-index: 100;
 
-    .navbar {
+    .menubar {
         position: fixed;
         top: 0;
         left: 0;
@@ -10,7 +10,7 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding: 2em;
+        padding: 2.5em;
         z-index: 100;
 
         #logo {
@@ -55,14 +55,33 @@
         }
     }
 
-    .nav-overlay {
+    .menu-overlay {
         position: fixed;
-        background-color: var(--color-beige);
-        z-index: 2;
         top: -100%;
         width: 100%;
         height: 100vh;
+        padding: 2.5em 2.5em 4em 2.5em;
         overflow: hidden;
-        padding: 4em;
+        background-color: var(--color-beige);
+        color: var(--color-darkgrey);
+        z-index: 2;
+        @extend .gantari-regular;
+
+        .menu-links {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 100%;
+            font-size: 70px;
+            gap: 30px;
+        }
+
+        .menu-footer {
+            display: flex;
+            flex-direction: row;
+            gap: 30px;
+        }
     }
 }

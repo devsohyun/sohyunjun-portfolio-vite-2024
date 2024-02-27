@@ -1,6 +1,6 @@
 import "./styles/main.scss"
 import { Suspense, useState } from "react"
-import { Nav } from "./componenets/common/Nav"
+import { Menu } from "./componenets/common/Menu"
 import { Experience } from "./componenets/experience/Experience"
 
 const App = () => {
@@ -11,7 +11,7 @@ const App = () => {
     <>
       <Suspense fallback={null}>
         <Experience section={section} setSection={setSection} />
-        <Nav
+        <Menu
           onSectionChange={setSection}
           menuOpened={menuOpened}
           setMenuOpened={setMenuOpened}
