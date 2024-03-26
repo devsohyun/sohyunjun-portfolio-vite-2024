@@ -107,21 +107,21 @@ export const Menu = (props) => {
           <div className='overlay-menu'>
             <div className='menu-item'>
               <p>
-                <motion.a href='#' whileHover={{ letterSpacing: '0.075em' }}>
+                <motion.a href='#' whileHover={{ letterSpacing: '0.08em' }}>
                   Projects
                 </motion.a>
               </p>
             </div>
             <div className='menu-item'>
               <p>
-                <motion.a href='#' whileHover={{ letterSpacing: '0.075em' }}>
+                <motion.a href='#' whileHover={{ letterSpacing: '0.08em' }}>
                   Sketches
                 </motion.a>
               </p>
             </div>
             <div className='menu-item'>
               <p>
-                <motion.a href='#' whileHover={{ letterSpacing: '0.075em' }}>
+                <motion.a href='#' whileHover={{ letterSpacing: '0.08em' }}>
                   About
                 </motion.a>
               </p>
