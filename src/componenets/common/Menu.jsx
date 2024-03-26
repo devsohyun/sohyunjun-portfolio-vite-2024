@@ -20,7 +20,7 @@ export const Menu = (props) => {
 
     menuTimeline.current.to(overlay, {
       top: 0,
-      duration: 1.5,
+      duration: 1.2,
       ease: 'power4.inOut',
     })
 
@@ -30,7 +30,7 @@ export const Menu = (props) => {
         {
           duration: 1,
           y: 0,
-          delay: 0.15,
+          delay: 0.2,
           stagger: 0.2,
           ease: 'power4.out',
         },
@@ -76,7 +76,7 @@ export const Menu = (props) => {
               }}
               transition={{ delay: menuOpened ? 0.3 : 1.5 }}
             >
-              SOHYUNJUN
+              SOHYUN JUN
             </motion.a>
           </div>
           <motion.div
