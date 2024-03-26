@@ -23,7 +23,7 @@
                 cursor: pointer;
 
                 &:hover {
-                    text-decoration: underline;
+                    font-weight: 700;
                 }
             }
         }
@@ -58,6 +58,9 @@
     .overlay {
         position: fixed;
         display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
         top: -100vh;
         left: 0;
         width: 100vw;
@@ -71,11 +74,8 @@
         @extend .gantari-regular;
 
         .overlay-menu {
-            position: fixed;
-            top: 0;
-            left: 0;
+            flex: 1 0;
             width: 100vw;
-            height: 100vh;
             display: flex;
             gap: 4em;
             flex-direction: column;
@@ -100,12 +100,6 @@
             text-decoration: none;
             outline: none;
             color: var(--color-darkgrey);
-
-            &:hover,
-            :active {
-                text-decoration: none;
-                outline: none;
-            }
         }
 
         .menu-footer {
@@ -117,7 +111,22 @@
             gap: 30px;
 
             .menu-social-media {
+                display: flex;
                 cursor: pointer;
+            }
+
+            .menu-social-media a {
+                text-decoration: none;
+                color: var(--color-darkgrey);
+                background: linear-gradient(to right, rgb(100, 200, 200), rgb(100, 200, 200)), linear-gradient(to right, var(--color-darkgrey), var(--color-darkgrey), var(--color-darkgrey));
+                background-size: 0 0.1em, 0 0.1em;
+                background-position: 100% 100%, 0 100%;
+                background-repeat: no-repeat;
+                transition: background-size 400ms;
+                &:hover,
+                &:focus {
+                    background-size: 0 0.1em, 100% 0.1em;
+                }
             }
         }
     }

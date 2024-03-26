@@ -9,10 +9,12 @@ export const Menu = (props) => {
   useEffect(() => {
     const menuItems = document.querySelectorAll('.menu-item p')
     const overlay = document.querySelector('.overlay')
+    const footer = document.querySelector('.menu-footer')
     const menuItemsArr = [...menuItems]
 
-    gsap.set(menuItems, { y: -355 })
+    gsap.set(menuItems, { y: -455 })
     gsap.set(overlay, { top: '-100vh' })
+    gsap.set(footer, { opacity: 0 })
 
     menuTimeline.current = gsap.timeline({ paused: true })
 
@@ -28,12 +30,17 @@ export const Menu = (props) => {
         {
           duration: 1,
           y: 0,
-          delay: 0.2,
+          delay: 0.15,
           stagger: 0.2,
           ease: 'power4.out',
         },
         '-=1'
       )
+    })
+
+    menuTimeline.current.to(footer, {
+      opacity: 1,
+      delay: -0.7,
     })
 
     return () => {
@@ -100,34 +107,40 @@ export const Menu = (props) => {
           <div className='overlay-menu'>
             <div className='menu-item'>
               <p>
-                <a href='#'>Projects</a>
+                <motion.a href='#' whileHover={{ letterSpacing: '0.075em' }}>
+                  Projects
+                </motion.a>
               </p>
             </div>
             <div className='menu-item'>
               <p>
-                <a href='#'>Sketches</a>
+                <motion.a href='#' whileHover={{ letterSpacing: '0.075em' }}>
+                  Sketches
+                </motion.a>
               </p>
             </div>
             <div className='menu-item'>
               <p>
-                <a href='#'>About</a>
+                <motion.a href='#' whileHover={{ letterSpacing: '0.075em' }}>
+                  About
+                </motion.a>
               </p>
             </div>
           </div>
           <div className='menu-footer'>
             <div className='menu-social-media'>
               <p>
-                <a href='#'></a>Mail
+                <a href='#'>Mail</a>
               </p>
             </div>
             <div className='menu-social-media'>
               <p>
-                <a href='#'></a>Instagram
+                <a href='#'>Instagram</a>
               </p>
             </div>
             <div className='menu-social-media'>
               <p>
-                <a href='#'></a>Twitter
+                <a href='#'>Twitter</a>
               </p>
             </div>
           </div>
