@@ -55,33 +55,70 @@
         }
     }
 
-    .menu-overlay {
+    .overlay {
         position: fixed;
-        top: -100%;
-        width: 100%;
+        display: flex;
+        top: -100vh;
+        left: 0;
+        width: 100vw;
         height: 100vh;
         padding: 2.5em 2.5em 4em 2.5em;
         overflow: hidden;
         background-color: var(--color-beige);
         color: var(--color-darkgrey);
         z-index: 2;
+        will-change: transform;
         @extend .gantari-regular;
 
-        .menu-links {
+        .overlay-menu {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
             display: flex;
+            gap: 4em;
             flex-direction: column;
-            align-items: center;
             justify-content: center;
-            width: 100%;
-            height: 100%;
-            font-size: 70px;
-            gap: 30px;
+            align-items: center;
+        }
+
+        .menu-item {
+            display: flex;
+            cursor: pointer;
+        }
+
+        .menu-item p {
+            position: relative;
+            text-align: center;
+            font-size: 10vw;
+            line-height: 80%;
+            will-change: transform;
+        }
+
+        .menu-item a {
+            text-decoration: none;
+            outline: none;
+            color: var(--color-darkgrey);
+
+            &:hover,
+            :active {
+                text-decoration: none;
+                outline: none;
+            }
         }
 
         .menu-footer {
             display: flex;
             flex-direction: row;
+            width: 100%;
+            align-items: flex-end;
+            justify-content: center;
             gap: 30px;
+
+            .menu-social-media {
+                cursor: pointer;
+            }
         }
     }
 }

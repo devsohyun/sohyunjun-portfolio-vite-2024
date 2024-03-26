@@ -1,9 +1,61 @@
-import { easeInOut, motion } from "framer-motion"
-import { useState } from "react"
-import { Link, Router } from "react-router-dom"
+import { useEffect, useRef } from 'react'
+import gsap from 'gsap'
+import { motion } from 'framer-motion'
 
 export const Menu = (props) => {
-  const { onSectionChange, menuOpened, setMenuOpened } = props
+  const { menuOpened, setMenuOpened } = props
+  const menuTimeline = useRef()
+
+  useEffect(() => {
+    const menuItems = document.querySelectorAll('.menu-item p')
+    const overlay = document.querySelector('.overlay')
+    const menuItemsArr = [...menuItems]
+
+    gsap.set(menuItems, { y: -355 })
+    gsap.set(overlay, { top: '-100vh' })
+
+    menuTimeline.current = gsap.timeline({ paused: true })
+
+    menuTimeline.current.to(overlay, {
+      top: 0,
+      duration: 1.5,
+      ease: 'power4.inOut',
+    })
+
+    menuItemsArr.reverse().forEach((menuItems, index) => {
+      menuTimeline.current.to(
+        menuItems,
+        {
+          duration: 1,
+          y: 0,
+          delay: 0.2,
+          stagger: 0.2,
+          ease: 'power4.out',
+        },
+        '-=1'
+      )
+    })
+
+    return () => {
+      menuTimeline.current.kill() // Clean up the timeline
+    }
+  }, [])
+
+  useEffect(() => {
+    if (menuTimeline.current) {
+      if (menuOpened) {
+        menuTimeline.current.play()
+      } else {
+        if (!menuTimeline.current.paused()) {
+          menuTimeline.current.reverse()
+        }
+      }
+    }
+  }, [menuOpened])
+
+  const handleToggle = () => {
+    setMenuOpened(!menuOpened)
+  }
 
   return (
     <div className='menu'>
@@ -13,16 +65,16 @@ export const Menu = (props) => {
             <motion.a
               href='https://sohyunjun.xyz/'
               animate={{
-                color: menuOpened ? "var(--color-darkgrey)" : "var(--color-white)",
+                color: menuOpened ? 'var(--color-darkgrey)' : 'var(--color-white)',
               }}
-              transition={{ delay: menuOpened ? 0 : 0.3 }}
+              transition={{ delay: menuOpened ? 0.3 : 1.5 }}
             >
               SOHYUNJUN
             </motion.a>
           </div>
           <motion.div
             className='menu-toggle'
-            onClick={() => setMenuOpened(!menuOpened)}
+            onClick={handleToggle}
             animate={{ rotate: menuOpened ? 135 : 0 }}
             transition={{ duration: 0.5 }}
           >
@@ -30,66 +82,36 @@ export const Menu = (props) => {
               <motion.div
                 className='horizontal-line'
                 animate={{
-                  background: menuOpened ? "var(--color-darkgrey)" : "var(--color-white)",
+                  background: menuOpened ? 'var(--color-darkgrey)' : 'var(--color-white)',
                 }}
-                transition={{ delay: menuOpened ? 0 : 0.3 }}
+                transition={{ delay: menuOpened ? 0.3 : 1.5 }}
               ></motion.div>
               <motion.div
                 className='vertical-line'
                 animate={{
-                  background: menuOpened ? "var(--color-darkgrey)" : "var(--color-white)",
+                  background: menuOpened ? 'var(--color-darkgrey)' : 'var(--color-white)',
                 }}
-                transition={{ delay: menuOpened ? 0 : 0.3 }}
+                transition={{ delay: menuOpened ? 0.3 : 1.5 }}
               ></motion.div>
             </div>
           </motion.div>
         </div>
-        <motion.div
-          className='menu-overlay'
-          animate={{ top: menuOpened ? 0 : "-100vh" }}
-          transition={{
-            type: "spring",
-            stiffness: 200,
-            damping: 40,
-            delay: menuOpened ? 0 : 0.6,
-          }}
-        >
-          <div className='menu-links'>
+        <div className='overlay'>
+          <div className='overlay-menu'>
             <div className='menu-item'>
-              <motion.p
-                animate={{ y: menuOpened ? 0 : '100%', opacity: menuOpened ? 1 : 0 }}
-                transition={{
-                  ease: easeInOut,
-                  duration: 0.4,
-                  delay: menuOpened ? 0.2 : 0 
-                }}
-              >
+              <p>
                 <a href='#'>Projects</a>
-              </motion.p>
+              </p>
             </div>
             <div className='menu-item'>
-              <motion.p
-                animate={{ y: menuOpened ? 0 : '100%', opacity: menuOpened ? 1 : 0 }}
-                transition={{
-                  ease: easeInOut,
-                  duration: 0.4,
-                  delay: menuOpened ? 0.4 : 0.2,
-                }}
-              >
+              <p>
                 <a href='#'>Sketches</a>
-              </motion.p>
+              </p>
             </div>
             <div className='menu-item'>
-              <motion.p
-                animate={{ y: menuOpened ? 0 : 100, opacity: menuOpened ? 1 : 0 }}
-                transition={{
-                  ease: easeInOut,
-                  duration: 0.4,
-                  delay: menuOpened ? 0.6 : 0.4,
-                }}
-              >
+              <p>
                 <a href='#'>About</a>
-              </motion.p>
+              </p>
             </div>
           </div>
           <div className='menu-footer'>
@@ -109,7 +131,7 @@ export const Menu = (props) => {
               </p>
             </div>
           </div>
-        </motion.div>
+        </div>
       </div>
     </div>
   )
