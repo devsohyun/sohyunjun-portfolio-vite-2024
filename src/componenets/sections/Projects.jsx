@@ -29,7 +29,7 @@ export const ProjectsSection = () => {
     <Section>
       <div className='projects-container'>
         <h2>Featured Projects</h2>
-        <div className='projects-contents'>
+        {/* <div className='projects-contents'>
           {cards.map((card) => (
             <div key={card.id} className='project'>
               <motion.a
@@ -55,7 +55,7 @@ export const ProjectsSection = () => {
               </motion.h1>
             </div>
           ))}
-        </div>
+        </div> */}
       </div>
     </Section>
   )

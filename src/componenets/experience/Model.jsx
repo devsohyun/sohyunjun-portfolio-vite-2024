@@ -1,7 +1,6 @@
 import * as THREE from 'three'
 import { MeshTransmissionMaterial, useGLTF } from '@react-three/drei'
 import { useFrame } from '@react-three/fiber'
-import { motion } from 'framer-motion-3d'
 import { useRef } from 'react'
 
 const Model = (props) => {
