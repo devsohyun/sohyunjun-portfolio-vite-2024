@@ -1,5 +1,4 @@
 import { useLoader } from '@react-three/fiber'
-
 import { Environment, Lightformer } from '@react-three/drei'
 import {
   EffectComposer,
@@ -12,6 +11,7 @@ import {
 import { LUTCubeLoader, ToneMappingMode } from 'postprocessing'
 import Model from './Model'
 import { useMotionValue } from 'framer-motion'
+import { Projects } from './Projects'
 
 export const Experience = (props) => {
   const texture = useLoader(LUTCubeLoader, '/models/F-6800-STD.cube')
@@ -73,6 +73,7 @@ export const Experience = (props) => {
         <HueSaturation hue={0} saturation={-0.25} />
         <ToneMapping mode={ToneMappingMode.ACES_FILMIC} />
       </EffectComposer>
+      {/* <Projects section={section} /> */}
     </>
   )
 }

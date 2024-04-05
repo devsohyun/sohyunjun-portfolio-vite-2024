@@ -4,10 +4,10 @@ import { Canvas, useLoader } from '@react-three/fiber'
 import { Suspense, useState } from 'react'
 import { Menu } from './componenets/common/Menu'
 import { Experience } from './componenets/experience/Experience'
-import './styles/main.scss'
 import { ScrollControls } from '@react-three/drei'
 import { ScrollManager } from './componenets/experience/ScrollManager'
 import { Interface } from './componenets/sections/Interface'
+import './styles/main.scss'
 
 const App = () => {
   const [section, setSection] = useState(0)
