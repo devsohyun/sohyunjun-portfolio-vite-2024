@@ -1,9 +1,30 @@
-import { MeshTransmissionMaterial, useGLTF } from "@react-three/drei"
+import * as THREE from 'three'
+import { MeshTransmissionMaterial, useGLTF } from '@react-three/drei'
+import { useFrame } from '@react-three/fiber'
+import { motion } from 'framer-motion-3d'
+import { useRef } from 'react'
 
-const Flower = (props) => {
-  const { nodes } = useGLTF("/models/torus-through-planes.glb")
+const Model = (props) => {
+  const groupRef = useRef()
+  const { nodes } = useGLTF('/models/torus-through-planes.glb')
+
+  //  rotate mesh with mouse position
+  useFrame(({ pointer }) => {
+    groupRef.current.rotation.y = THREE.MathUtils.lerp(
+      groupRef.current.rotation.y,
+      pointer.x * (Math.PI / -5),
+      0.05
+    )
+
+    groupRef.current.rotation.x = THREE.MathUtils.lerp(
+      groupRef.current.rotation.x,
+      pointer.y * (Math.PI / 5),
+      0.05
+    )
+  })
+
   return (
-    <group {...props} dispose={null}>
+    <group ref={groupRef} {...props} dispose={null}>
       <mesh
         castShadow
         receiveShadow
@@ -29,7 +50,7 @@ const Flower = (props) => {
           attenuationDistance={0.5}
           anisotropicBlur={0.1}
           envMapIntensity={0.3}
-          color={"#d3d3d3"}
+          color={'#d3d3d3'}
         />
       </mesh>
       <mesh
@@ -50,4 +71,4 @@ const Flower = (props) => {
   )
 }
 
-export default Flower
+export default Model
