@@ -33,10 +33,10 @@ export const ProjectsSection = () => {
         <div className='projects-container'>
           <h2>Featured Projects</h2>
           <div className='projects-contents'>
-            <Plane
+            {/* <Plane
             >
               <img src='/images/img2.jpg' data-sampler='uPlaneTexture' alt='' />
-            </Plane>
+            </Plane> */}
             {cards.map((card) => (
               <div key={card.id} className='project'>
                 <motion.a
