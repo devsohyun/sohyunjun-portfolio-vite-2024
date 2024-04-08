@@ -1,6 +1,10 @@
 import { motion } from 'framer-motion'
 import { Section } from './Utils'
-import { Curtains, Plane } from 'react-curtains'
+import { Curtains, Plane, useCurtains, useCurtainsEvent } from 'react-curtains'
+import { Vec2 } from 'curtainsjs'
+import { vertexShader, fragmentShader } from '../../shaders/shaders'
+import { useRef, useState } from 'react'
+import SinglePlane from './SinglePlane'
 
 export const ProjectsSection = () => {
   const cards = [
@@ -26,18 +30,71 @@ export const ProjectsSection = () => {
     },
   ]
 
+  const [nbPlanes, setNbPlanes] = useState(4)
+
+  // keep track of the planes
+  const [planes, setPlanes] = useState([])
+
+  const planesDeformations = useRef(0)
+
+  useCurtainsEvent(
+    'onRender',
+    (curtains) => {
+      // update our planes deformation
+      // increase/decrease the effect
+      planesDeformations.current = curtains.lerp(planesDeformations.current, 0, 0.075)
+
+      // update planes deformations
+      planes.forEach((plane) => {
+        plane.uniforms.planeDeformation.value = planesDeformations.current
+      })
+    },
+    [planes]
+  )
+
+  useCurtainsEvent('onScroll', (curtains) => {
+    // get scroll deltas to apply the effect on scroll
+    const delta = curtains.getScrollDeltas()
+
+    // invert value for the effect
+    delta.y = -delta.y
+
+    // threshold
+    if (delta.y > 60) {
+      delta.y = 60
+    } else if (delta.y < -60) {
+      delta.y = -60
+    }
+
+    if (Math.abs(delta.y) > Math.abs(planesDeformations.current)) {
+      planesDeformations.current = curtains.lerp(planesDeformations.current, delta.y, 0.5)
+    }
+  })
+
+  const onPlaneReady = (plane) => {
+    setPlanes((planes) => [...planes, plane])
+  }
+
+  const buildPlane = (index) => {
+    return <SinglePlane key={index} index={index} onPlaneReady={onPlaneReady} />
+  }
+
+  const allPlanes = []
+  for (let i = 0; i < nbPlanes; i++) {
+    allPlanes.push(buildPlane(i))
+  }
+
   return (
-    // check this to see why curtains cannot be at App level??! https://github.com/martinlaxenaire/react-curtains/issues/9
-    <Curtains>
-      <Section>
-        <div className='projects-container'>
-          <h2>Featured Projects</h2>
-          <div className='projects-contents'>
-            {/* <Plane
-            >
-              <img src='/images/img2.jpg' data-sampler='uPlaneTexture' alt='' />
-            </Plane> */}
-            {cards.map((card) => (
+    <Section>
+      <div className='projects-container'>
+        <h2>Featured Projects</h2>
+        <div className='MultiplePlanes-wrapper'>
+          {allPlanes.map((planeEl) => {
+            return planeEl
+          })}
+        </div>
+        {/* <div className='projects-contents'>
+          {cards.map((card) => (
               <div key={card.id} className='project'>
                 <motion.a
                   href={`/projects&${card.id}`}
@@ -62,9 +119,8 @@ export const ProjectsSection = () => {
                 </motion.h1>
               </div>
             ))}
-          </div>
-        </div>
-      </Section>
-    </Curtains>
+        </div> */}
+      </div>
+    </Section>
   )
 }
