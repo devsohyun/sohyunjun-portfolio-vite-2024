@@ -1,42 +1,55 @@
 export const vertexShader = `
   precision mediump float;
-      
+  // default mandatory variables
   attribute vec3 aVertexPosition;
   attribute vec2 aTextureCoord;
-
   uniform mat4 uMVMatrix;
   uniform mat4 uPMatrix;
 
-  uniform mat4 planeTextureMatrix;
-
+  // our texture matrix uniform
+  uniform mat4 simplePlaneTextureMatrix;
+  // custom variables
   varying vec3 vVertexPosition;
   varying vec2 vTextureCoord;
-
-  uniform float uPlaneDeformation;
-
+  uniform float uTime;
+  uniform vec2 uResolution;
+  uniform vec2 uMousePosition;
+  uniform float uMouseMoveStrength;
   void main() {
     vec3 vertexPosition = aVertexPosition;
-
-    // cool effect on scroll
-    vertexPosition.y += sin(((vertexPosition.x + 1.0) / 2.0) * 3.141592) * (sin(uPlaneDeformation / 90.0));
-
+    // get the distance between our vertex and the mouse position
+    float distanceFromMouse = distance(uMousePosition, vec2(vertexPosition.x, vertexPosition.y));
+    // calculate our wave effect
+    float waveSinusoid = cos(5.0 * (distanceFromMouse - (uTime / 75.0)));
+    // attenuate the effect based on mouse distance
+    float distanceStrength = (0.4 / (distanceFromMouse + 0.4));
+    // calculate our distortion effect
+    float distortionEffect = distanceStrength * waveSinusoid * uMouseMoveStrength;
+    // apply it to our vertex position
+    vertexPosition.z +=  distortionEffect / 30.0;
+    vertexPosition.x +=  (distortionEffect / 30.0 * (uResolution.x / uResolution.y) * (uMousePosition.x - vertexPosition.x));
+    vertexPosition.y +=  distortionEffect / 30.0 * (uMousePosition.y - vertexPosition.y);
     gl_Position = uPMatrix * uMVMatrix * vec4(vertexPosition, 1.0);
-    
     // varyings
-    vVertexPosition = aVertexPosition;
-    vTextureCoord = (planeTextureMatrix * vec4(aTextureCoord, 0.0, 1.0)).xy;
+    vTextureCoord = (simplePlaneTextureMatrix * vec4(aTextureCoord, 0.0, 1.0)).xy;
+    vVertexPosition = vertexPosition;
   }
 `
 
 export const fragmentShader = `
   precision mediump float;
-
   varying vec3 vVertexPosition;
   varying vec2 vTextureCoord;
-  
-  uniform sampler2D planeTexture;
-  
+  uniform sampler2D simplePlaneTexture;
   void main() {
-    gl_FragColor = texture2D(planeTexture, vTextureCoord);
+    // apply our texture
+    vec4 finalColor = texture2D(simplePlaneTexture, vTextureCoord);
+    // fake shadows based on vertex position along Z axis
+    finalColor.rgb -= clamp(-vVertexPosition.z, 0.0, 1.0);
+    // fake lights based on vertex position along Z axis
+    finalColor.rgb += clamp(vVertexPosition.z, 0.0, 1.0);
+    // handling premultiplied alpha (useful if we were using a png with transparency)
+    finalColor = vec4(finalColor.rgb * finalColor.a, finalColor.a);
+    gl_FragColor = finalColor;
   }
 `

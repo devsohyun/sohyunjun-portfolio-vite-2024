@@ -15,14 +15,14 @@ const App = () => {
 
   return (
     <>
-      <Suspense fallback={null}>
-        <Canvas
-          gl={{ antialias: false }}
-          camera={{ position: [15, -8, 15], fov: 15 }}
-          onCreated={(state) => {
-            state.gl.toneMapping = THREE.NoToneMapping
-          }}
-        >
+      <Canvas
+        gl={{ antialias: false }}
+        camera={{ position: [15, -8, 15], fov: 15 }}
+        onCreated={(state) => {
+          state.gl.toneMapping = THREE.NoToneMapping
+        }}
+      >
+        <Suspense fallback={null}>
           <ScrollControls pages={6.5} damping={0.1}>
             <ScrollManager section={section} onSectionChange={setSection} />
             <Experience section={section} setSection={setSection} />
@@ -30,13 +30,13 @@ const App = () => {
               <Interface />
             </Scroll>
           </ScrollControls>
-        </Canvas>
-        <Menu
-          onSectionChange={setSection}
-          menuOpened={menuOpened}
-          setMenuOpened={setMenuOpened}
-        />
-      </Suspense>
+        </Suspense>
+      </Canvas>
+      <Menu
+        onSectionChange={setSection}
+        menuOpened={menuOpened}
+        setMenuOpened={setMenuOpened}
+      />
     </>
   )
 }
