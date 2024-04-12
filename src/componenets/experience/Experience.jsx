@@ -11,7 +11,6 @@ import {
 import { LUTCubeLoader, ToneMappingMode } from 'postprocessing'
 import Model from './Model'
 import { useMotionValue } from 'framer-motion'
-import { Projects } from './Projects'
 
 export const Experience = (props) => {
   const texture = useLoader(LUTCubeLoader, '/models/F-6800-STD.cube')

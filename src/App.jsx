@@ -1,7 +1,7 @@
 import * as THREE from 'three'
 import { Scroll } from '@react-three/drei'
 import { Canvas, useLoader } from '@react-three/fiber'
-import { Suspense, useState } from 'react'
+import { Suspense, useState, useEffect, useRef } from 'react'
 import { Menu } from './componenets/common/Menu'
 import { Experience } from './componenets/experience/Experience'
 import { ScrollControls } from '@react-three/drei'
@@ -12,6 +12,18 @@ import './styles/main.scss'
 const App = () => {
   const [section, setSection] = useState(0)
   const [menuOpened, setMenuOpened] = useState(false)
+  const canvasRef = useRef(null)
+  const [curtains, setCurtains] = useState(null)
+
+  // useEffect(() => {
+  //   if (canvasRef.current) {
+  //     const curtainsTemp = new Curtains({
+  //       canvas: canvasRef.current,
+  //       container: 'canvas',
+  //     })
+  //     setCurtains(curtainsTemp)
+  //   }
+  // }, [canvasRef.current])
 
   return (
     <>
@@ -23,7 +35,7 @@ const App = () => {
         }}
       >
         <Suspense fallback={null}>
-          <ScrollControls pages={6.5} damping={0.1}>
+          <ScrollControls pages={7} damping={0.1}>
             <ScrollManager section={section} onSectionChange={setSection} />
             <Experience section={section} setSection={setSection} />
             <Scroll html>
