@@ -27,7 +27,10 @@ export const Experience = (props) => {
             y: section === 1 ? -viewport.height : -1.5,
           }}
         >
-          <FadingImageDisplacement position-z={8} />
+          <FadingImageDisplacement position-y={0} position-z={8} />
+          <FadingImageDisplacement position-y={-1.5} position-z={8} />
+          <FadingImageDisplacement position-y={-3} position-z={8} />
+          <FadingImageDisplacement position-y={-4.5} position-z={8} />
         </motion.group>
       </Scroll>
 

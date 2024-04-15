@@ -52,16 +52,15 @@ export const ProjectsSection = () => {
         <h2>Featured Projects</h2>
         <div className='projects-contents'>
           {cards.map((card, index) => (
-            <div
-              key={card.id}
-              className='project'
-            >
-              <a href={`/projects&${card.id}`}>
-                <img src={card.url} alt={`Project ${card.id}`} />
-              </a>
+            <div key={card.id} className='project'>
               <div className='project-name-wrapper'>
                 <h1 className={`project-name-${card.id}`}>{card.title}</h1>
               </div>
+              {/* <a href={`/projects&${card.id}`}>
+                <div className='project-name-wrapper'>
+                  <h1 className={`project-name-${card.id}`}>{card.title}</h1>
+                </div>
+              </a> */}
             </div>
           ))}
         </div>
