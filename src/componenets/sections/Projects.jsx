@@ -1,3 +1,4 @@
+import { useEffect, useRef } from 'react'
 import { Section } from './Utils'
 
 const cards = [
@@ -24,14 +25,37 @@ const cards = [
 ]
 
 export const ProjectsSection = () => {
+  const projectRefs = useRef([])
+  const myDivRef = useRef()
+
+  // useEffect(() => {
+  //   projectRefs.current.forEach((ref, index) => {
+  //     new hoverEffect({
+  //       parent: ref,
+  //       image1: '/images/img2.jpg',
+  //       image2: '/images/img3.jpg',
+  //       displacementImage: '/images/img4.jpg',
+  //     })
+  //   })
+
+  //   return () => {
+  //     // Cleanup function to remove hover effects
+  //     projectRefs.current.forEach((ref) => {
+  //       ref.hoverEffect.remove()
+  //     })
+  //   }
+  // }, [])
 
   return (
     <Section>
       <div className='projects-container'>
         <h2>Featured Projects</h2>
         <div className='projects-contents'>
-          {cards.map((card) => (
-            <div key={card.id} className='project'>
+          {cards.map((card, index) => (
+            <div
+              key={card.id}
+              className='project'
+            >
               <a href={`/projects&${card.id}`}>
                 <img src={card.url} alt={`Project ${card.id}`} />
               </a>
