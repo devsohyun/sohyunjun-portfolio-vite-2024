@@ -43,7 +43,7 @@ const App = () => {
           }}
         >
           <Suspense fallback={null}>
-            <ScrollControls pages={7} damping={0.1}>
+            <ScrollControls pages={4} damping={0.1}>
               <ScrollManager section={section} onSectionChange={setSection} />
               <Experience section={section} setSection={setSection} />
               <Scroll html>

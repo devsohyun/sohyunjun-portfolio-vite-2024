@@ -1,3 +1,4 @@
+import * as THREE from 'three'
 import { MeshTransmissionMaterial, useGLTF } from '@react-three/drei'
 import { useFrame, useLoader } from '@react-three/fiber'
 import { useRef } from 'react'
@@ -23,13 +24,13 @@ const AbstractDonut = (props) => {
   // useFrame(({ pointer }) => {
   //   groupRef.current.rotation.y = THREE.MathUtils.lerp(
   //     groupRef.current.rotation.y,
-  //     pointer.x * (Math.PI / -5),
+  //     pointer.x * (Math.PI / -10),
   //     0.05
   //   )
 
   //   groupRef.current.rotation.x = THREE.MathUtils.lerp(
   //     groupRef.current.rotation.x,
-  //     pointer.y * (Math.PI / 5),
+  //     pointer.y * (Math.PI / 10),
   //     0.05
   //   )
   // })

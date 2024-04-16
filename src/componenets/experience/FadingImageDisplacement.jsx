@@ -1,7 +1,7 @@
 import * as THREE from 'three'
-import { shaderMaterial, useTexture } from '@react-three/drei'
-import { extend, useFrame } from '@react-three/fiber'
-import { useRef, useState } from 'react'
+import { shaderMaterial, useTexture, Text } from '@react-three/drei'
+import { extend, useFrame, useThree } from '@react-three/fiber'
+import { useEffect, useRef, useState } from 'react'
 
 export const ImageFadeMaterial = shaderMaterial(
   {
@@ -42,13 +42,25 @@ export const ImageFadeMaterial = shaderMaterial(
 extend({ ImageFadeMaterial })
 
 const FadingImageDisplacement = (props) => {
+  const { position, url, name, index } = props
   const imageRef = useRef()
+  const [hovered, setHover] = useState(false)
+  const state = useThree()
+  const { width, height } = state.viewport.getCurrentViewport(state.camera, [0, 0, 12])
   const [texture1, texture2, dispTexture] = useTexture([
-    '/images/home/img1.jpg',
-    '/images/home/img2.jpg',
+    '/images/home/trip1.jpg',
+    url,
     '/images/home/displacement/11.jpg',
   ])
-  const [hovered, setHover] = useState(false)
+  const fontProps = {
+    font: '/fonts/Gantari-Regular.woff',
+    fontSize: 0.15,
+    letterSpacing: 0.02,
+    lineHeight: 0.5,
+    color: '#fff',
+    position: [index % 2 === 0 ? width / 2.5 : -width / 2.5, -0.35, 0],
+    'material-toneMapped': false,
+  }
 
   useFrame(() => {
     imageRef.current.dispFactor = THREE.MathUtils.lerp(
@@ -60,7 +72,7 @@ const FadingImageDisplacement = (props) => {
 
   return (
     <mesh
-      {...props}
+      position={position}
       onPointerOver={(e) => setHover(true)}
       onPointerOut={(e) => setHover(false)}
     >
@@ -72,6 +84,7 @@ const FadingImageDisplacement = (props) => {
         disp={dispTexture}
         toneMapped={false}
       />
+      <Text {...fontProps}>{name}</Text>
     </mesh>
   )
 }
