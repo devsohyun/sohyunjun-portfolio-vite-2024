@@ -15,11 +15,13 @@
     max-width: 100%;
 
     &:nth-child(2) {
+        // project section
         border: 1px red solid;
         height: 200vh;
     }
 
     &:nth-child(3) {
+        // contact section
         border: 1px red solid;
         height: 100vh;
         justify-content: flex-start
