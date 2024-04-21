@@ -140,7 +140,7 @@ export const Menu = (props) => {
             </div>
             <div className='menu-social-media'>
               <p>
-                <a href='#'>Twitter</a>
+                <a href='#'>LinkedIn</a>
               </p>
             </div>
           </div>

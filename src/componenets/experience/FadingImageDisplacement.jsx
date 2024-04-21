@@ -36,20 +36,20 @@ export const ImageFadeMaterial = shaderMaterial(
       gl_FragColor = finalTexture;
       #include <tonemapping_fragment>
       #include <encodings_fragment>
-    }`
+    } `
 )
 
 extend({ ImageFadeMaterial })
 
 const FadingImageDisplacement = (props) => {
-  const { position, url, name, index } = props
+  const { index, position, default_url, hover_url, name } = props
   const imageRef = useRef()
   const [hovered, setHover] = useState(false)
   const state = useThree()
   const { width, height } = state.viewport.getCurrentViewport(state.camera, [0, 0, 12])
   const [texture1, texture2, dispTexture] = useTexture([
-    '/images/home/trip1.jpg',
-    url,
+    default_url, 
+    hover_url, 
     '/images/home/displacement/11.jpg',
   ])
   const fontProps = {
