@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react'
 import gsap from 'gsap'
 import { motion } from 'framer-motion'
+import { Link } from 'react-router-dom'
 
 export const Menu = (props) => {
   const { menuOpened, setMenuOpened } = props
@@ -69,15 +70,16 @@ export const Menu = (props) => {
       <div className='menu-container'>
         <div className='menubar'>
           <div id='logo'>
-            <motion.a
-              href='https://sohyunjun.xyz/'
-              animate={{
-                color: menuOpened ? 'var(--color-darkgrey)' : 'var(--color-white)',
-              }}
-              transition={{ delay: menuOpened ? 0.3 : 1.5 }}
-            >
-              SOHYUN JUN
-            </motion.a>
+            <Link to='/'>
+              <motion.span
+                animate={{
+                  color: menuOpened ? 'var(--color-darkgrey)' : 'var(--color-white)',
+                }}
+                transition={{ delay: menuOpened ? 0.3 : 1.5 }}
+              >
+                SOHYUN JUN
+              </motion.span>
+            </Link>
           </div>
           <motion.div
             className='menu-toggle'
@@ -104,29 +106,23 @@ export const Menu = (props) => {
           </motion.div>
         </div>
         <div className='overlay'>
-          <div className='overlay-menu'>
-            <div className='menu-item'>
-              <p>
-                <motion.a href='#' whileHover={{ letterSpacing: '0.08em' }}>
-                  Projects
-                </motion.a>
-              </p>
-            </div>
-            <div className='menu-item'>
-              <p>
-                <motion.a href='#' whileHover={{ letterSpacing: '0.08em' }}>
-                  Sketches
-                </motion.a>
-              </p>
-            </div>
-            <div className='menu-item'>
-              <p>
-                <motion.a href='#' whileHover={{ letterSpacing: '0.08em' }}>
-                  About
-                </motion.a>
-              </p>
-            </div>
-          </div>
+          <ul className='overlay-menu'>
+            <li className='menu-item'>
+              <Link to='/projects' onClick={handleToggle}>
+                <motion.p whileHover={{ letterSpacing: '0.08em' }}>Projects</motion.p>
+              </Link>
+            </li>
+            <li className='menu-item'>
+              <Link to='/sketches' onClick={handleToggle}>
+                <motion.p whileHover={{ letterSpacing: '0.08em' }}>Sketches</motion.p>
+              </Link>
+            </li>
+            <li className='menu-item'>
+              <Link to='/about' onClick={handleToggle}>
+                <motion.p whileHover={{ letterSpacing: '0.08em' }}>About</motion.p>
+              </Link>
+            </li>
+          </ul>
           <div className='menu-footer'>
             <div className='menu-social-media'>
               <p>

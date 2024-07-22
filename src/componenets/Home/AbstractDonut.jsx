@@ -1,7 +1,7 @@
 import * as THREE from 'three'
 import { MeshTransmissionMaterial, useGLTF } from '@react-three/drei'
 import { useFrame, useLoader } from '@react-three/fiber'
-import { useRef } from 'react'
+import { useEffect, useRef } from 'react'
 import { Environment, Lightformer } from '@react-three/drei'
 import { LUTCubeLoader, ToneMappingMode } from 'postprocessing'
 import { motion } from 'framer-motion-3d'
@@ -33,7 +33,12 @@ const AbstractDonut = (props) => {
   //     pointer.y * (Math.PI / 10),
   //     0.05
   //   )
-  // })
+  // })'
+
+  useEffect(() => {
+    console.log(section)
+    
+  }, [section])
 
   return (
     <motion.group ref={groupRef} {...props} dispose={null} animate={{ rotateY: section === 0 ? 0 : 3 }}>

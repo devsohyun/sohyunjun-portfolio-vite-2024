@@ -16,18 +16,8 @@
 
     &:nth-child(2) {
         // project section
-        // border: 1px red solid;
         height: 200vh;
-    }
-
-    &:nth-child(3) {
-        // contact section
-        // border: 1px red solid;
-        height: 100vh;
-        justify-content: flex-start;
-        width: 100%;
-        height: 50%;
-        background-color: var(--color-beige);
+        border: 1px solid red;
     }
 
     h1 {

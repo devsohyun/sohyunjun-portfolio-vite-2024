@@ -94,6 +94,9 @@
             font-size: 8vw;
             line-height: 80%;
             will-change: transform;
+            text-decoration: none;
+            outline: none;
+            color: var(--color-darkgrey);
         }
 
         .menu-item a {
