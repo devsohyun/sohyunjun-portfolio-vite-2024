@@ -1,6 +1,5 @@
-import * as THREE from 'three'
 import { MeshTransmissionMaterial, useGLTF } from '@react-three/drei'
-import { useFrame, useLoader } from '@react-three/fiber'
+import { useLoader } from '@react-three/fiber'
 import { useEffect, useRef } from 'react'
 import { Environment, Lightformer } from '@react-three/drei'
 import { LUTCubeLoader, ToneMappingMode } from 'postprocessing'

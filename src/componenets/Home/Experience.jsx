@@ -1,11 +1,9 @@
 import { useThree } from '@react-three/fiber'
-import AbstractDonut from './AbstractDonut'
 import { useMotionValue } from 'framer-motion'
 import { motion } from 'framer-motion-3d'
 import { Scroll } from '@react-three/drei'
-import FadingImageDisplacement from './FadingImageDisplacement'
-import { useEffect } from 'react'
 import ProjectsScroll from './ProjectsScroll'
+import AbstractDonut from '../models/AbstractDonut'
 
 export const Experience = (props) => {
   const { viewport } = useThree()

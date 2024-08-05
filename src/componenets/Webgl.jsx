@@ -1,6 +1,6 @@
 import { Suspense, useEffect, useState, lazy } from 'react'
 import * as THREE from 'three'
-import { Canvas, useLoader } from '@react-three/fiber'
+import { Canvas } from '@react-three/fiber'
 import { Menu } from './common/Menu'
 import { MotionConfig } from 'framer-motion'
 import Loader from './UI/Loader'

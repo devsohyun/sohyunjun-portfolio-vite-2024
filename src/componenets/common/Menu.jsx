@@ -126,17 +126,17 @@ export const Menu = (props) => {
           <div className='menu-footer'>
             <div className='menu-social-media'>
               <p>
-                <a href='#'>Mail</a>
+                <a href='mailto:iamsohyunjun@gmail.com'>Mail</a>
               </p>
             </div>
             <div className='menu-social-media'>
               <p>
-                <a href='#'>Instagram</a>
+                <a href='https://www.instagram.com/groovy_works/'>Instagram</a>
               </p>
             </div>
             <div className='menu-social-media'>
               <p>
-                <a href='#'>LinkedIn</a>
+                <a href='https://www.linkedin.com/in/sohyunjun/'>LinkedIn</a>
               </p>
             </div>
           </div>
