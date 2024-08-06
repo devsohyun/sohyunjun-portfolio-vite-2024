@@ -7,7 +7,7 @@ import AbstractDonut from '../models/AbstractDonut'
 
 export const Experience = (props) => {
   const { viewport } = useThree()
-  const { section, setSection } = props
+  const { section } = props
 
   const cameraPositionX = useMotionValue()
   const cameraLookAtX = useMotionValue()

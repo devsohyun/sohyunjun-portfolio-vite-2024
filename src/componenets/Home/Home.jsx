@@ -14,7 +14,7 @@ const Home = () => {
       <ScrollControls pages={3} damping={0.1}>
         {/* change size of entire page */}
         <ScrollManager section={section} onSectionChange={setSection} />
-        <Experience section={section} setSection={setSection} />
+        <Experience section={section} />
         <Scroll html>
           <Interface />
         </Scroll>

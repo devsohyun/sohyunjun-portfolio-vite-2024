@@ -29,6 +29,8 @@ export const ScrollManager = (props) => {
   }, [section])
 
   useFrame(() => {
+    console.log(data.pages)
+    
     if (isAnimating.current) {
       lastScroll.current = data.scroll.current
       return

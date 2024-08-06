@@ -42,7 +42,7 @@ export const ImageFadeMaterial = shaderMaterial(
 extend({ ImageFadeMaterial })
 
 const FadingImageDisplacement = (props) => {
-  const { index, position, default_url, hover_url, name } = props
+  const { index, position, default_url, hover_url, name, planeWidth, planeHeight } = props
   const imageRef = useRef()
   const [hovered, setHover] = useState(false)
   const state = useThree()
@@ -76,7 +76,7 @@ const FadingImageDisplacement = (props) => {
       onPointerOver={(e) => setHover(true)}
       onPointerOut={(e) => setHover(false)}
     >
-      <planeGeometry />
+      <planeGeometry args={[planeWidth, planeHeight]} />
       <imageFadeMaterial
         ref={imageRef}
         tex={texture1}

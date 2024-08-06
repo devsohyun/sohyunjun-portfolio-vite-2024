@@ -33,14 +33,13 @@ const About = () => {
       {/* <Models shownIndex={modelIdx} models={models} /> */}
       <Html
         className='about-container'
-        wrapperClass='wrapper'
         zIndexRange={[10, 0]}
         fullscreen
         occlude
       >
         <div className='left'>
           <div className='main-img'>
-            <img src='/images/about/img1.jpg' />
+            <img src='/images/about/main.gif' />
           </div>
         </div>
         <div className='right'>

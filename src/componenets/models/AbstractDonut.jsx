@@ -1,5 +1,6 @@
+import * as THREE from 'three'
 import { MeshTransmissionMaterial, useGLTF } from '@react-three/drei'
-import { useLoader } from '@react-three/fiber'
+import { useFrame, useLoader } from '@react-three/fiber'
 import { useEffect, useRef } from 'react'
 import { Environment, Lightformer } from '@react-three/drei'
 import { LUTCubeLoader, ToneMappingMode } from 'postprocessing'
@@ -19,28 +20,37 @@ const AbstractDonut = (props) => {
   const texture = useLoader(LUTCubeLoader, '/models/F-6800-STD.cube')
   const { section } = props
 
-  // //  rotate mesh with mouse position
-  // useFrame(({ pointer }) => {
-  //   groupRef.current.rotation.y = THREE.MathUtils.lerp(
-  //     groupRef.current.rotation.y,
-  //     pointer.x * (Math.PI / -10),
-  //     0.05
-  //   )
+  // Rotate the group based on the mouse position
+  useFrame(({ pointer }) => {
+    if (groupRef.current) {
+      const damping = 0.05
+      const rotationSpeed = Math.PI / 10
 
-  //   groupRef.current.rotation.x = THREE.MathUtils.lerp(
-  //     groupRef.current.rotation.x,
-  //     pointer.y * (Math.PI / 10),
-  //     0.05
-  //   )
-  // })'
+      // Adjust rotation based on pointer distance from center
+      const targetYRotation = pointer.x * rotationSpeed
+      const targetXRotation = pointer.y * rotationSpeed
 
-  useEffect(() => {
-    console.log(section)
-    
-  }, [section])
+      groupRef.current.rotation.y = THREE.MathUtils.lerp(
+        groupRef.current.rotation.y,
+        targetYRotation,
+        damping
+      )
+
+      groupRef.current.rotation.x = THREE.MathUtils.lerp(
+        groupRef.current.rotation.x,
+        targetXRotation,
+        damping
+      )
+    }
+  })
 
   return (
-    <motion.group ref={groupRef} {...props} dispose={null} animate={{ rotateY: section === 0 ? 0 : 3 }}>
+    <motion.group
+      ref={groupRef}
+      {...props}
+      dispose={null}
+      animate={{ rotateY: section === 0 ? 0 : 3 }}
+    >
       <mesh
         castShadow
         receiveShadow
