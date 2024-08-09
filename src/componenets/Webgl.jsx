@@ -4,32 +4,22 @@ import { Canvas } from '@react-three/fiber'
 import { Menu } from './common/Menu'
 import { MotionConfig } from 'framer-motion'
 import Loader from './UI/Loader'
-import Projects from './Projects/Projects'
-import Sketches from './Sketches/Sketches'
-import About from './About/About'
 
 const Home = lazy(() => import('./Home/Home'))
+const Projects = lazy(() => import('./Projects/Projects'))
+const Sketches = lazy(() => import('./Sketches/Sketches'))
+const About = lazy(() => import('./About/About'))
 
 const Webgl = ({ page }) => {
   const [section, setSection] = useState(0)
   const [menuOpened, setMenuOpened] = useState(false)
   const [isLoading, setIsLoading] = useState(true)
 
-  // useEffect(() => {
-  //   if (canvasRef.current) {
-  //     const curtainsTemp = new Curtains({
-  //       canvas: canvasRef.current,
-  //       container: 'canvas',
-  //     })
-  //     setCurtains(curtainsTemp)
-  //   }
-  // }, [canvasRef.current])
-
   const HandleLoading = ({ load }) => {
     useEffect(() => {
       load(true)
       return () => load(false)
-    }, [])
+    }, [load])
   }
 
   return (
@@ -62,7 +52,7 @@ const Webgl = ({ page }) => {
           menuOpened={menuOpened}
           setMenuOpened={setMenuOpened}
         />
-        <Loader load={isLoading} page={page} />
+        <Loader load={isLoading} />
       </MotionConfig>
     </>
   )

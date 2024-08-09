@@ -65,11 +65,16 @@ export const Menu = (props) => {
     setMenuOpened(!menuOpened)
   }
 
+  const handleLogoClick = () => {
+    setMenuOpened(false) // Close the menu if it's open
+    window.location.href = '/' // Force a refresh and navigate to root
+  }
+
   return (
     <div className='menu'>
       <div className='menu-container'>
         <div className='menubar'>
-          <div id='logo'>
+          <div id='logo' onClick={handleLogoClick}>
             <Link to='/'>
               <motion.span
                 animate={{
