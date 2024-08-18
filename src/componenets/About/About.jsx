@@ -3,7 +3,7 @@ import Models from './Models'
 import Texts from './Texts'
 
 const objects = ['Stool', 'Table', 'Bench']
-const models = objects.map((k) => './models/about/' + k.toLowerCase() + '.glb')
+const models = objects.map((k) => `${import.meta.env.BASE_URL}/models/about/` + k.toLowerCase() + '.glb')
 
 const About = () => {
   const ref = useRef()

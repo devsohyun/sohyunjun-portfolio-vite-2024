@@ -16,8 +16,9 @@ import {
 
 const AbstractDonut = (props) => {
   const groupRef = useRef()
-  const { nodes } = useGLTF('/models/torus-through-planes.glb')
-  const texture = useLoader(LUTCubeLoader, '/models/F-6800-STD.cube')
+  const { nodes } = useGLTF(`${import.meta.env.BASE_URL}/models/torus-through-planes.glb`);
+  const texture = useLoader(LUTCubeLoader, `${import.meta.env.BASE_URL}/models/F-6800-STD.cube`);
+  
   const { section } = props
 
   // Rotate the group based on the mouse position
@@ -96,7 +97,7 @@ const AbstractDonut = (props) => {
       <ambientLight intensity={0.5} />
       <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} />
       <pointLight position={[-10, -10, -10]} />
-      <Environment files='./images/peppermint_powerplant_1k.hdr' resolution={512}>
+      <Environment files={`${import.meta.env.BASE_URL}/images/peppermint_powerplant_1k.hdr`} resolution={512}>
         <group rotation={[0, 0, 1]}>
           <Lightformer
             form='circle'

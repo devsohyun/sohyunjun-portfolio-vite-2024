@@ -27,7 +27,7 @@ const Texts = ({ idx, setIdx, aboutTexts }) => {
     <Html className='about-container' zIndexRange={[10, 0]} fullscreen occlude="blending">
       <div className='left'>
         <div className='main-img'>
-          <img src='/images/about/main.gif' />
+          <img src={`${import.meta.env.BASE_URL}/images/about/main.gif`} />
         </div>
       </div>
       <div className='right'>

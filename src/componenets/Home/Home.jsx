@@ -1,6 +1,5 @@
 import { Scroll } from '@react-three/drei'
-import { Canvas, useLoader } from '@react-three/fiber'
-import { useState, useEffect, useRef } from 'react'
+import { useState } from 'react'
 import { ScrollControls } from '@react-three/drei'
 import { Experience } from './Experience'
 import { ScrollManager } from './ScrollManager'

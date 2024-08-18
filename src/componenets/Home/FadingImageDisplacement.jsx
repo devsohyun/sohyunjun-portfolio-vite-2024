@@ -1,7 +1,7 @@
 import * as THREE from 'three'
 import { shaderMaterial, useTexture, Text } from '@react-three/drei'
 import { extend, useFrame, useThree } from '@react-three/fiber'
-import { useEffect, useRef, useState } from 'react'
+import { useRef, useState } from 'react'
 
 export const ImageFadeMaterial = shaderMaterial(
   {
@@ -50,10 +50,10 @@ const FadingImageDisplacement = (props) => {
   const [texture1, texture2, dispTexture] = useTexture([
     default_url, 
     hover_url, 
-    '/images/home/displacement/11.jpg',
+    `${import.meta.env.BASE_URL}/images/home/displacement/11.jpg`,
   ])
   const fontProps = {
-    font: '/fonts/Gantari-Regular.woff',
+    font: `${import.meta.env.BASE_URL}/fonts/Gantari-Regular.woff`,
     fontSize: 0.15,
     letterSpacing: 0.02,
     lineHeight: 0.5,

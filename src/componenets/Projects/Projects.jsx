@@ -1,31 +1,31 @@
-import { Html, Scroll, ScrollControls } from '@react-three/drei'
-import { ScrollManager } from '../Home/ScrollManager'
+import { Scroll, ScrollControls } from '@react-three/drei'
 import { useEffect, useState } from 'react'
 import FadingImageDisplacement from '../Home/FadingImageDisplacement'
 import { useThree } from '@react-three/fiber'
 
+
 const cards = [
   {
-    default_url: '/images/home/img2.jpg',
-    hover_url: '/images/home/project_hover_01.jpg',
+    default_url: `${import.meta.env.BASE_URL}/images/home/project_default_01.jpg`,
+    hover_url: `${import.meta.env.BASE_URL}/images/home/project_hover_01.jpg`,
     name: 'Lorem ipsum',
     id: 1,
   },
   {
-    default_url: '/images/home/img2.jpg',
-    hover_url: '/images/home/project_hover_02.jpg',
+    default_url: `${import.meta.env.BASE_URL}/images/home/project_default_02.jpg`,
+    hover_url: `${import.meta.env.BASE_URL}/images/home/project_hover_02.jpg`,
     name: 'Lorem ipsum',
     id: 2,
   },
   {
-    default_url: '/images/home/img2.jpg',
-    hover_url: '/images/home/project_hover_03.jpg',
+    default_url: `${import.meta.env.BASE_URL}/images/home/project_default_03.jpg`,
+    hover_url: `${import.meta.env.BASE_URL}/images/home/project_hover_03.jpg`,
     name: 'Lorem ipsum',
     id: 3,
   },
   {
-    default_url: '/images/home/img2.jpg',
-    hover_url: '/images/home/project_hover_04.jpg',
+    default_url: `${import.meta.env.BASE_URL}/images/home/project_default_04.jpg`,
+    hover_url: `${import.meta.env.BASE_URL}/images/home/project_hover_04.jpg`,
     name: 'Lorem ipsum',
     id: 4,
   },
