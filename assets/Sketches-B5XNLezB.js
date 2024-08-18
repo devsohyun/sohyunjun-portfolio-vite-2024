@@ -1,0 +1,1 @@
+import{j as r}from"./index-DfcIbyxR.js";import{H as t}from"./Html-Bcdz048K.js";import"./extends-CCbyfPlC.js";import"./Webgl-C5LOyYBO.js";const i=()=>r.jsx(r.Fragment,{children:r.jsx(t,{children:r.jsx("span",{children:"Sketches"})})});export{i as default};
